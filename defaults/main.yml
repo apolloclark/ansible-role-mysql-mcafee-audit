@@ -1,0 +1,8 @@
+---
+# https://github.com/mcafee/mysql-audit
+mcafee_plugin_version: "1.1.4-725"
+mysql_config_include_dir: "/etc/mysql/conf.d"
+audit_json_log_file: "/var/log/mysql/audit.log"
+audit_json_file: "ON"
+audit_force_record_logins: "ON"
+audit_validate_checksum: "OFF"

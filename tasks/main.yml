@@ -1,0 +1,35 @@
+---
+
+# http://docs.ansible.com/ansible/latest/apt_module.html
+- name: Install unzip
+  apt:
+    name: unzip
+    state: present
+
+# http://docs.ansible.com/ansible/latest/get_url_module.html
+- name: Download plugin
+  get_url:
+    url: "https://bintray.com/mcafee/mysql-audit-plugin/download_file?file_path=audit-plugin-mysql-5.7-{{ mcafee_plugin_version }}-linux-x86_64.zip"
+    dest: "/tmp/audit-plugin-mysql.zip"
+
+# http://docs.ansible.com/ansible/latest/unarchive_module.html
+- name: Unzip plugin
+  unarchive:
+    src: "/tmp/audit-plugin-mysql.zip"
+    dest: "/tmp"
+
+# http://docs.ansible.com/ansible/latest/copy_module.html
+- name: Install the audit plugin
+  copy:
+    src: "/tmp/audit-plugin-mysql-5.7-{{ mcafee_plugin_version }}/lib/libaudit_plugin.so"
+    dest: "/usr/lib/mysql/plugin/libaudit_plugin.so"
+
+# http://docs.ansible.com/ansible/latest/template_module.html
+- name: Copy mcafee-audit.cnf config file
+  template:
+    src: "mcafee-audit.cnf.j2"
+    dest: "{{ mysql_config_include_dir }}/mcafee-audit.cnf"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart mysql

@@ -1,0 +1,15 @@
+# {{ ansible_managed }}
+
+[mysqld]
+#
+# McAfee mysql-audit plugin
+#
+# https://github.com/mcafee/mysql-audit/wiki/Configuration
+# https://github.com/mcafee/mysql-audit/wiki/Troubleshooting#checksum-validation
+# https://github.com/mcafee/mysql-audit/issues/78
+#
+audit_json_log_file = "{{ audit_json_log_file }}"
+audit_json_file = "{{ audit_json_file }}"
+audit_force_record_logins = "{{ audit_force_record_logins }}"
+audit_validate_checksum = "{{ audit_validate_checksum }}"
+plugin-load=AUDIT=libaudit_plugin.so
