@@ -16,6 +16,7 @@
 - name: Unzip plugin
   unarchive:
     src: "/tmp/audit-plugin-mysql.zip"
+    remote_src: "yes"
     dest: "/tmp"
 
 # http://docs.ansible.com/ansible/latest/copy_module.html
