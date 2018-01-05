@@ -24,6 +24,7 @@
   copy:
     src: "/tmp/audit-plugin-mysql-5.7-{{ mcafee_plugin_version }}/lib/libaudit_plugin.so"
     dest: "/usr/lib/mysql/plugin/libaudit_plugin.so"
+    remote_src: "yes"
 
 # http://docs.ansible.com/ansible/latest/template_module.html
 - name: Copy mcafee-audit.cnf config file
