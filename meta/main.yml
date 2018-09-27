@@ -2,7 +2,7 @@
 dependencies: []
 
 galaxy_info:
-  role_name: mysql-mcafee-audit
+  role_name: mysql_mcafee_audit
   author: apolloclark
   description: Install and configure the McAfee audit plugin.
   company: "Apollo Clark"
